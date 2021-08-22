@@ -1,0 +1,153 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-size: 10px;
+  color: #333;
+}
+
+body {
+  font-family: "rubik", sans-serif;
+  background-color: snow;
+}
+
+h1 {
+  font-size: 6.2rem;
+}
+
+.outer-container {
+  margin: 0 auto;
+  padding: 3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2.5rem;
+}
+
+.choice-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.choice-text {
+  font-size: 1.8rem;
+  margin-bottom: 1.8rem;
+}
+
+.choices {
+  display: flex;
+  gap: 3rem;
+}
+
+.game-button {
+  height: 10rem;
+  width: 10rem;
+  border-radius: 9px;
+  border: none;
+  box-shadow: 0 1.2rem 2rem rgba(129, 90, 90, 0.12);
+  cursor: pointer;
+}
+
+.game-button:hover,
+.game-button:active {
+  background-color: rgb(236, 223, 223);
+  box-shadow: 0 2rem 2rem rgba(0, 0, 0, 0.35);
+}
+
+.winner-board-container {
+  display: flex;
+  justify-content: center;
+}
+.winner-board {
+  font-size: 4.5rem;
+  min-height: 4.5rem;
+}
+
+.display-container {
+  width: 75%;
+  margin: 1.5rem auto 6.5rem auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.display-box {
+  width: 30%;
+  height: 25rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: white;
+  box-shadow: 1rem 2rem 2rem rgba(0, 0, 0, 0.1);
+}
+
+.display-text {
+  text-align: center;
+  width: 100%;
+  font-size: 2.4rem;
+  font-weight: 500;
+  background-color: lightslategray;
+}
+
+.display-text-vs {
+  font-size: 5.6rem;
+  color: #555;
+  width: fit-content;
+}
+
+.animation-box {
+  height: 20rem;
+  width: 20rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.score-container {
+  width: 75%;
+  margin: 0 auto 9.6rem auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2.5rem;
+}
+
+.score-box {
+  width: 15%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 1rem 2rem 2rem rgba(0, 0, 0, 0.1);
+}
+
+.score-text {
+  font-size: 1.6rem;
+}
+
+.score {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 10rem;
+  font-size: 5rem;
+  font-weight: 500;
+}
+
+.modal {
+  position: fixed;
+  left: 50%;
+  top: 40%;
+  transform: translate(-50%, -50%) scale(0);
+  height: 30rem;
+  width: 60rem;
+  background-color: silver;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  border: 1px solid #555;
+  z-index: 10;
+}
