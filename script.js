@@ -6,15 +6,21 @@ const scorePlayer = document.querySelector("#scorePlayer");
 const scoreTies = document.querySelector("#scoreTies");
 const scoreComputer = document.querySelector("#scoreComputer");
 const winnerBoard = document.querySelector(".winner-board");
+const modal = document.querySelector(".modal");
+const modalHeading = document.querySelector(".modal-heading");
+const resetButton = document.querySelector(".modal-button");
+const overlay = document.querySelector(".overlay");
+
 let userChoice = null;
 let wins = 0;
 let loses = 0;
 let ties = 0;
 let counter = 0;
 
-//get input from user
+//get input from user and play game
 possibleChoices.forEach((choice) =>
   choice.addEventListener("click", () => {
+    counter += 1;
     userChoice = choice.dataset.value;
     if (counter <= 5) {
       playGame();
@@ -27,7 +33,9 @@ function playGame() {
   uptdateDisplays(userChoice, computerChoice);
   let result = playRound(userChoice, computerChoice);
   updateScores(result);
-  counter += 1;
+  if (counter === 5) {
+    popModal();
+  }
 }
 
 //play round
@@ -102,4 +110,24 @@ function updateScores(result) {
     scorePlayer.innerHTML = wins;
     winnerBoard.innerHTML = "YOU WIN!";
   }
+}
+
+function popModal() {
+  if (wins === loses) {
+    modalHeading.textContent = "It's a Tie!";
+  } else if (wins > loses) {
+    modalHeading.textContent = "Player Wins!";
+  } else {
+    modalHeading.textContent = "Computer Wins!";
+  }
+
+  modal.classList.add("active");
+  overlay.classList.add("active");
+}
+
+//Reset game
+resetButton.addEventListener("click", resetGame);
+
+function resetGame() {
+  window.location.reload();
 }

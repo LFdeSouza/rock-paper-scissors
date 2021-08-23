@@ -47,14 +47,14 @@ h1 {
   width: 10rem;
   border-radius: 9px;
   border: none;
-  box-shadow: 0 1.2rem 2rem rgba(129, 90, 90, 0.12);
+  box-shadow: 0 1rem 2rem rgba(129, 90, 90, 0.12);
   cursor: pointer;
 }
 
 .game-button:hover,
 .game-button:active {
   background-color: rgb(236, 223, 223);
-  box-shadow: 0 2rem 2rem rgba(0, 0, 0, 0.35);
+  box-shadow: 0 1.3rem 2rem rgba(0, 0, 0, 0.35);
 }
 
 .winner-board-container {
@@ -137,17 +137,57 @@ h1 {
 }
 
 .modal {
+  display: none;
   position: fixed;
   left: 50%;
   top: 40%;
-  transform: translate(-50%, -50%) scale(0);
+  transform: translate(-50%, -50%);
   height: 30rem;
   width: 60rem;
   background-color: silver;
+
+  border: 1px solid #555;
+  z-index: 10;
+}
+
+.modal.active {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-around;
-  border: 1px solid #555;
-  z-index: 10;
+  justify-content: center;
+}
+
+.modal-heading {
+  font-size: 3.5rem;
+  margin-bottom: 3rem;
+}
+
+.modal-button {
+  width: 150px;
+  height: 40px;
+  border: none;
+  font-size: 1.3rem;
+  border-radius: 9px;
+  cursor: pointer;
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.1);
+}
+
+.modal-button:active,
+.modal-button:hover {
+  background-color: rgb(126, 115, 115);
+  box-shadow: 0 0.8rem 0.8rem rgba(0, 0, 0, 0.35);
+}
+
+.overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.795);
+}
+
+.overlay.active {
+  display: block;
 }
