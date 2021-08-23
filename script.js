@@ -1,5 +1,5 @@
 // get all the items from the page
-const possibleChoices = document.querySelectorAll(".game-button");
+const possibleChoices = document.querySelectorAll("[data-value]");
 const playerChoiceDisplay = document.querySelector("#playerChoiceDisplay");
 const computerChoiceDisplay = document.querySelector("#computerChoiceDisplay");
 const scorePlayer = document.querySelector("#scorePlayer");
@@ -10,39 +10,41 @@ let userChoice = null;
 let wins = 0;
 let loses = 0;
 let ties = 0;
+let counter = 0;
 
-//get input from user, break
+//get input from user
 possibleChoices.forEach((choice) =>
   choice.addEventListener("click", () => {
-    userChoice = choice.id;
-    let computerChoice = getComputerChoice();
-    uptdateDisplays(userChoice, computerChoice);
-    let result = playRound(userChoice, computerChoice);
-    updateScores(result);
+    userChoice = choice.dataset.value;
+    if (counter <= 5) {
+      playGame();
+    }
   })
 );
+
+function playGame() {
+  let computerChoice = getComputerChoice();
+  uptdateDisplays(userChoice, computerChoice);
+  let result = playRound(userChoice, computerChoice);
+  updateScores(result);
+  counter += 1;
+}
 
 //play round
 function playRound(userChoice, computerChoice) {
   if (userChoice === computerChoice) {
     return "tie";
-  } else if (userChoice === "rock" && computerChoice === "scissors") {
-    uptdateDisplays(userChoice, computerChoice);
+  } else if (
+    (userChoice === "rock" && computerChoice === "scissors") ||
+    (userChoice === "paper" && computerChoice === "rock") ||
+    (userChoice === "scissors" && computerChoice === "paper")
+  ) {
     return "win";
-  } else if (userChoice === "rock" && computerChoice === "paper") {
-    uptdateDisplays(userChoice, computerChoice);
-    return "lose";
-  } else if (userChoice === "paper" && computerChoice === "rock") {
-    uptdateDisplays(userChoice, computerChoice);
-    return "win";
-  } else if (userChoice === "paper" && computerChoice === "scissors") {
-    uptdateDisplays(userChoice, computerChoice);
-    return "lose";
-  } else if (userChoice === "scissors" && computerChoice === "paper") {
-    uptdateDisplays(userChoice, computerChoice);
-    return "win";
-  } else if (userChoice === "scissors" && computerChoice === "rock") {
-    uptdateDisplays(userChoice, computerChoice);
+  } else if (
+    (userChoice === "rock" && computerChoice === "paper") ||
+    (userChoice === "paper" && computerChoice === "scissors") ||
+    (userChoice === "scissors" && computerChoice === "rock")
+  ) {
     return "lose";
   }
 }
